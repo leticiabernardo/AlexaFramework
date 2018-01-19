@@ -1,6 +1,11 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
 
-RewriteCond %{SCRIPT_FILENAME} !-f
-RewriteCond %{SCRIPT_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^Alessa.*
 
-RewriteRule ^ index.php [L]
+  RewriteCond %{SCRIPT_FILENAME} !-f
+  RewriteCond %{SCRIPT_FILENAME} !-d
+
+  RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
